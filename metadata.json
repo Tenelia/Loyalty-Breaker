@@ -1,0 +1,5 @@
+{
+  "name": "Loyalty Breaker",
+  "description": "Calculates the optimal menu combination to drain your loyalty card balance to exactly zero by determining the minimum top-ups required.",
+  "requestFramePermissions": []
+}
