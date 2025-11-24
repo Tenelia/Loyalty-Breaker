@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Plus, X, Coffee, BookOpen } from 'lucide-svelte';
   import type { MenuItem } from '../types';
 
   let { items, onItemsChange } = $props<{ 
@@ -12,70 +11,32 @@
 
   // Comprehensive Starbucks Singapore Preset (re-declared for Svelte context)
   const STARBUCKS_SG_PRESET = [
-    { name: 'Caffè Americano (Tall)', price: 5.60 },
-    { name: 'Caffè Americano (Grande)', price: 6.20 },
-    { name: 'Caffè Americano (Venti)', price: 6.70 },
-    { name: 'Caffè Latte (Tall)', price: 7.10 },
-    { name: 'Caffè Latte (Grande)', price: 7.70 },
-    { name: 'Caffè Latte (Venti)', price: 8.20 },
-    { name: 'Cappuccino (Tall)', price: 7.10 },
-    { name: 'Cappuccino (Grande)', price: 7.70 },
-    { name: 'Cappuccino (Venti)', price: 8.20 },
-    { name: 'Caramel Macchiato (Tall)', price: 7.80 },
-    { name: 'Caramel Macchiato (Grande)', price: 8.40 },
-    { name: 'Caramel Macchiato (Venti)', price: 8.90 },
-    { name: 'White Choc Mocha (Tall)', price: 7.60 },
-    { name: 'White Choc Mocha (Grande)', price: 8.20 },
-    { name: 'White Choc Mocha (Venti)', price: 8.70 },
-    { name: 'Caffè Mocha (Tall)', price: 7.30 },
-    { name: 'Caffè Mocha (Grande)', price: 7.90 },
-    { name: 'Flat White (Tall)', price: 7.10 },
-    { name: 'Flat White (Grande)', price: 7.70 },
-    { name: 'Espresso (Doppio)', price: 4.60 },
-    { name: 'Cold Brew (Tall)', price: 6.30 },
-    { name: 'Cold Brew (Grande)', price: 6.90 },
+    { name: 'Freshly Brewed Coffee (Tall)', price: 3.90 },
+    { name: 'Freshly Brewed Coffee (Grande)', price: 4.50 },
+    { name: 'Freshly Brewed Coffee (Venti)', price: 5.10 },
+    { name: 'Caffè Americano (Tall)', price: 5.40 },
+    { name: 'Caffè Americano (Grande)', price: 6.00 },
+    { name: 'Caffè Americano (Venti)', price: 6.60 },
+    { name: 'Caffè Latte (Tall)', price: 6.80 },
+    { name: 'Caffè Latte (Grande)', price: 7.40 },
+    { name: 'Caffè Latte (Venti)', price: 8.00 },
+    { name: 'Cappuccino (Tall)', price: 6.80 },
+    { name: 'Cappuccino (Grande)', price: 7.40 },
+    { name: 'Cappuccino (Venti)', price: 8.00 },
+    { name: 'Flat White (Tall)', price: 7.70 },
+    { name: 'Flat White (Grande)', price: 8.30 },
+    { name: 'Cold Brew (Tall)', price: 6.20 },
+    { name: 'Cold Brew (Grande)', price: 6.80 },
     { name: 'Cold Brew (Venti)', price: 7.40 },
-    { name: 'Vanilla Sweet Cream Cold Brew (Tall)', price: 7.50 },
-    { name: 'Vanilla Sweet Cream Cold Brew (Grande)', price: 8.10 },
-    { name: 'Caramel Frappuccino (Tall)', price: 7.80 },
-    { name: 'Caramel Frappuccino (Grande)', price: 8.40 },
-    { name: 'Caramel Frappuccino (Venti)', price: 8.90 },
-    { name: 'Java Chip Frappuccino (Tall)', price: 8.20 },
-    { name: 'Java Chip Frappuccino (Grande)', price: 8.80 },
-    { name: 'Java Chip Frappuccino (Venti)', price: 9.30 },
-    { name: 'Dark Mocha Frappuccino (Tall)', price: 8.20 },
-    { name: 'Dark Mocha Frappuccino (Grande)', price: 8.80 },
-    { name: 'Green Tea Frappuccino (Tall)', price: 8.20 },
-    { name: 'Green Tea Frappuccino (Grande)', price: 8.80 },
-    { name: 'Mango Passion Fruit Frappuccino (Tall)', price: 7.80 },
-    { name: 'Mango Passion Fruit Frappuccino (Grande)', price: 8.40 },
-    { name: 'Chocolate Chip Cream Frappuccino (Tall)', price: 8.20 },
-    { name: 'Green Tea Latte (Tall)', price: 7.30 },
-    { name: 'Green Tea Latte (Grande)', price: 7.90 },
-    { name: 'Chai Tea Latte (Tall)', price: 7.10 },
-    { name: 'Chai Tea Latte (Grande)', price: 7.70 },
-    { name: 'Iced Shaken Hibiscus Tea (Tall)', price: 5.80 },
-    { name: 'Iced Shaken Hibiscus Tea (Grande)', price: 6.40 },
-    { name: 'English Breakfast Tea', price: 4.90 },
-    { name: 'Earl Grey Tea', price: 4.90 },
-    { name: 'Emperor Clouds & Mist Green Tea', price: 4.90 },
+    { name: 'Vanilla Sweet Cream Cold Brew (Tall)', price: 7.70 },
+    { name: 'Vanilla Sweet Cream Cold Brew (Grande)', price: 8.30 },
+    { name: 'Vanilla Sweet Cream Cold Brew (Venti)', price: 8.90 },
     { name: 'New York Cheesecake', price: 7.90 },
-    { name: 'Chocolate of a Thousand Leaves', price: 7.90 },
-    { name: 'Classic Dark Chocolate Cake', price: 7.50 },
-    { name: 'Blueberry Muffin', price: 4.50 },
-    { name: 'Chocolate Chip Muffin', price: 4.50 },
-    { name: 'Banana Walnut Muffin', price: 4.50 },
-    { name: 'Butter Croissant', price: 3.90 },
-    { name: 'Almond Croissant', price: 4.50 },
-    { name: 'Ham & Cheese Croissant', price: 6.20 },
-    { name: 'Chocolate Chip Cookie', price: 4.50 },
-    { name: 'Oatmeal Raisin Cookie', price: 4.50 },
+    { name: 'Cookie Crumble Cake in Cup', price: 5.50 },
     { name: 'Egg White, Roasted Pepper & Cheddar Wrap', price: 6.90 },
     { name: 'Chicken Ham & Cheese Panini', price: 7.50 },
-    { name: 'Roast Chicken & Sriracha Mayo Panini', price: 7.90 },
-    { name: 'Mushroom & Cheese Pie', price: 6.50 },
-    { name: 'Chicken & Mushroom Pie', price: 6.90 },
-    { name: 'Shepherd\'s Pie', price: 7.20 }
+    { name: 'Chicken Sriracha Pita', price: 7.70 },
+    { name: 'Beef & MushroomShepherd\'s Pie', price: 7.90 }
   ];
 
   const generateId = () => {
@@ -122,7 +83,6 @@
   <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
     <div>
         <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
-            <BookOpen size={20} class="text-emerald-600"/>
             Menu Items
         </h2>
         <p class="text-xs text-gray-500 mt-1">
@@ -133,10 +93,11 @@
     <div class="flex flex-wrap gap-2 w-full md:w-auto">
         <button
             onclick={handleLoadPreset}
-            class="flex-1 md:flex-none justify-center px-3 py-2 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg transition-colors flex items-center gap-2 text-sm font-semibold border border-emerald-200"
+            class="flex-1 md:flex-none justify-center px-4 py-3 min-h-[44px] bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg transition-colors flex items-center gap-2 text-sm font-semibold border border-emerald-200"
             title="Load Starbucks SG Menu"
+            aria-label="Load Starbucks Singapore Menu"
         >
-            <Coffee size={16} />
+            <span class="text-xl">☕</span>
             <span>Load SG Menu</span>
         </button>
     </div>
@@ -148,21 +109,22 @@
       type="text"
       placeholder="Add new item name..."
       bind:value={newItemName}
-      class="flex-1 min-w-0 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all bg-white"
+      class="flex-1 min-w-0 px-4 py-3 min-h-[44px] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all bg-white text-base"
     />
     <input
       type="number"
       placeholder="$"
       step="0.01"
       bind:value={newItemPrice}
-      class="w-24 px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all bg-white"
+      class="w-28 px-3 py-3 min-h-[44px] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all bg-white text-base"
     />
     <button
       type="submit"
       disabled={!newItemName || !newItemPrice}
-      class="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+      class="bg-gray-900 text-white px-4 py-3 min-w-[44px] min-h-[44px] rounded-lg hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-2xl"
+      aria-label="Add menu item"
     >
-      <Plus size={20} />
+      ➕
     </button>
   </form>
 
@@ -170,7 +132,7 @@
   <div class="border border-gray-100 rounded-xl bg-gray-50/50 p-4">
     {#if items.length === 0}
         <div class="flex flex-col items-center justify-center text-gray-400 p-12 text-center min-h-[300px]">
-            <Coffee size={48} class="mb-4 opacity-20" />
+            <span class="text-6xl mb-4 opacity-20">☕</span>
             <p class="text-sm font-medium">Your menu is empty.</p>
             <p class="text-xs mt-1">Add items manually or load the Starbucks preset above.</p>
         </div>
@@ -181,13 +143,14 @@
                 class="flex flex-col justify-between p-3 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all group relative"
             >
                 <div class="flex justify-between items-start gap-2 mb-1">
-                    <span class="text-gray-700 font-medium text-sm leading-tight">{item.name}</span>
+                    <span class="text-gray-700 font-medium text-sm leading-tight pr-8">{item.name}</span>
                     <button
                         onclick={() => handleRemoveItem(item.id)}
-                        class="text-gray-300 hover:text-red-500 p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity absolute top-1 right-1"
+                        class="text-gray-300 hover:text-red-500 p-2 min-w-[36px] min-h-[36px] rounded opacity-0 group-hover:opacity-100 transition-opacity absolute top-1 right-1 flex items-center justify-center text-lg"
                         title="Remove item"
+                        aria-label="Remove {item.name}"
                     >
-                        <X size={14} />
+                        ❌
                     </button>
                 </div>
                 <div class="flex items-center justify-between mt-2">

@@ -1,1 +1,0 @@
-// File deleted during migration to Svelte.

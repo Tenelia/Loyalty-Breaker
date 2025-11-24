@@ -9,6 +9,8 @@ export interface Solution {
   finalTargetBalance: number;
   items: MenuItem[];
   totalCost: number;
+  itemCount: number; // Total number of items in this solution
+  uniqueItems: number; // Number of unique item types
 }
 
 export enum CalculationStatus {

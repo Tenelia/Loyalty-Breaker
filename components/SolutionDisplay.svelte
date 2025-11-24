@@ -1,13 +1,15 @@
 <script lang="ts">
-  import { ShoppingCart, CheckCircle, AlertCircle, Coffee } from 'lucide-svelte';
   import { CalculationStatus, type Solution } from '../types';
 
-  let { status, solution, currentBalance, topUpIncrement } = $props<{
+  let { status, solutions, currentBalance, topUpIncrement } = $props<{
     status: CalculationStatus,
-    solution: Solution | null,
+    solutions: Solution[],
     currentBalance: number,
     topUpIncrement: number
   }>();
+
+  let selectedIndex = $state(0);
+  let solution = $derived(solutions[selectedIndex]);
 
   let totalTopUp = $derived(solution ? solution.topUpsNeeded * topUpIncrement : 0);
   let itemsCount = $derived.by(() => {
@@ -17,12 +19,27 @@
           return acc;
       }, {});
   });
+
+  function nextSolution() {
+    selectedIndex = (selectedIndex + 1) % solutions.length;
+  }
+
+  function prevSolution() {
+    selectedIndex = (selectedIndex - 1 + solutions.length) % solutions.length;
+  }
+
+  // Reset selection when solutions change
+  $effect(() => {
+    if (solutions.length > 0 && selectedIndex >= solutions.length) {
+      selectedIndex = 0;
+    }
+  });
 </script>
 
 {#if status === CalculationStatus.IDLE}
     <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
-    <div class="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-        <Coffee class="text-blue-500" size={32} />
+    <div class="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+        ☕
     </div>
     <h3 class="text-lg font-semibold text-gray-800 mb-2">Ready to Calculate</h3>
     <p class="text-gray-500 text-sm">
@@ -37,8 +54,8 @@
     </div>
 {:else if status === CalculationStatus.IMPOSSIBLE}
     <div class="bg-white p-8 rounded-xl shadow-sm border border-red-100 text-center">
-    <div class="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-        <AlertCircle class="text-red-500" size={32} />
+    <div class="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+        ⚠️
     </div>
     <h3 class="text-lg font-semibold text-red-800 mb-2">No Combination Found</h3>
     <p class="text-gray-500 text-sm">
@@ -50,19 +67,45 @@
     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-teal-500"></div>
     
     <header class="p-6 bg-emerald-50/50 border-b border-emerald-100">
-        <div class="flex items-start justify-between">
-        <div>
-            <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
-            <CheckCircle class="text-emerald-500" />
-            Solution Found!
-            </h2>
-            <p class="text-gray-600 mt-1">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
+                <span class="text-3xl">✅</span>
+                {solutions.length === 1 ? 'Solution Found!' : `${solutions.length} Solutions Found!`}
+              </h2>
+            </div>
+            <p class="text-gray-600">
             Drain your card to exactly <span class="font-bold text-gray-900">$0.00</span>
             </p>
+            {#if solutions.length > 1}
+              <div class="flex items-center gap-3 mt-3">
+                <button 
+                  onclick={prevSolution}
+                  class="p-2.5 min-w-[44px] min-h-[44px] hover:bg-emerald-100 rounded-lg transition-colors flex items-center justify-center text-2xl"
+                  title="Previous solution"
+                  aria-label="Previous solution"
+                >
+                  ◀️
+                </button>
+                <span class="text-sm font-medium text-gray-600 min-w-[100px] text-center px-2">
+                  Option {selectedIndex + 1} of {solutions.length}
+                </span>
+                <button 
+                  onclick={nextSolution}
+                  class="p-2.5 min-w-[44px] min-h-[44px] hover:bg-emerald-100 rounded-lg transition-colors flex items-center justify-center text-2xl"
+                  title="Next solution"
+                  aria-label="Next solution"
+                >
+                  ▶️
+                </button>
+              </div>
+            {/if}
         </div>
-        <div class="text-right">
+        <div class="text-left sm:text-right sm:min-w-[220px]">
             <div class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Total Order</div>
-            <div class="text-3xl font-bold text-emerald-600">${solution.totalCost.toFixed(2)}</div>
+            <div class="text-3xl font-bold text-emerald-600 break-words">${solution.totalCost.toFixed(2)}</div>
+            <div class="text-xs text-gray-500 mt-1">{solution.itemCount} items ({solution.uniqueItems} unique)</div>
         </div>
         </div>
     </header>
@@ -87,10 +130,10 @@
         <!-- Receipt Card -->
         <section class="md:col-span-2 bg-gray-50 rounded-lg p-5 border border-gray-200 flex flex-col">
             <div class="flex items-center gap-2 mb-4 text-gray-500 border-b border-gray-200 pb-2">
-                <ShoppingCart size={18} />
+                <span class="text-lg">🛒</span>
                 <span class="font-medium text-sm">Order Summary</span>
             </div>
-            <div class="flex-1 overflow-auto">
+            <div class="flex-1 overflow-auto custom-scrollbar">
                 <table class="w-full text-sm text-left">
                     <tbody>
                         {#each Object.entries(itemsCount) as [name, count] (name)}

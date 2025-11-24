@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { X, Calculator, Database } from 'lucide-svelte';
-
   let { open = $bindable(false) } = $props<{ open: boolean }>();
   let dialog: HTMLDialogElement;
 
@@ -28,11 +26,15 @@
   <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto m-auto">
     <header class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white z-10">
       <h2 class="text-xl font-bold text-gray-900 flex items-center gap-2">
-        <Calculator class="text-emerald-600" />
+        <span class="text-2xl">🧮</span>
         The Discrete Math Behind It
       </h2>
-      <button onclick={close} class="p-2 hover:bg-gray-100 rounded-full transition-colors">
-        <X size={20} />
+      <button 
+        onclick={close} 
+        class="p-2.5 min-w-[44px] min-h-[44px] hover:bg-gray-100 rounded-full transition-colors flex items-center justify-center text-2xl"
+        aria-label="Close modal"
+      >
+        ✖️
       </button>
     </header>
     
@@ -93,7 +95,7 @@
 
        <section>
         <h3 class="font-bold text-lg text-gray-800 mb-3 flex items-center gap-2">
-            <Database size={18} class="text-purple-500"/>
+            <span class="text-xl">💾</span>
             Local Caching
         </h3>
         <p class="text-gray-600 leading-relaxed text-sm">
@@ -103,7 +105,10 @@
 
     </div>
     <div class="p-6 bg-gray-50 border-t border-gray-100 text-center">
-        <button onclick={close} class="px-6 py-2 bg-gray-900 text-white rounded-lg font-semibold hover:bg-black transition-colors">
+        <button 
+          onclick={close} 
+          class="px-8 py-3 min-h-[44px] bg-gray-900 text-white rounded-lg font-semibold hover:bg-black transition-colors"
+        >
             Got it, thanks!
         </button>
     </div>
