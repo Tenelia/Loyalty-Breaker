@@ -97,7 +97,6 @@
             title="Load Starbucks SG Menu"
             aria-label="Load Starbucks Singapore Menu"
         >
-            <span class="text-xl">☕</span>
             <span>Load SG Menu</span>
         </button>
     </div>
@@ -121,10 +120,10 @@
     <button
       type="submit"
       disabled={!newItemName || !newItemPrice}
-      class="bg-gray-900 text-white px-4 py-3 min-w-[44px] min-h-[44px] rounded-lg hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-2xl"
+      class="bg-gray-900 text-white px-4 py-3 min-w-[44px] min-h-[44px] rounded-lg hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
       aria-label="Add menu item"
     >
-      ➕
+      +
     </button>
   </form>
 
@@ -132,7 +131,6 @@
   <div class="border border-gray-100 rounded-xl bg-gray-50/50 p-4">
     {#if items.length === 0}
         <div class="flex flex-col items-center justify-center text-gray-400 p-12 text-center min-h-[300px]">
-            <span class="text-6xl mb-4 opacity-20">☕</span>
             <p class="text-sm font-medium">Your menu is empty.</p>
             <p class="text-xs mt-1">Add items manually or load the Starbucks preset above.</p>
         </div>
@@ -150,7 +148,7 @@
                         title="Remove item"
                         aria-label="Remove {item.name}"
                     >
-                        ❌
+                        &times;
                     </button>
                 </div>
                 <div class="flex items-center justify-between mt-2">

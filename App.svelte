@@ -100,9 +100,6 @@
   <header class="bg-white border-b border-gray-200 sticky top-0 z-30 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <div class="bg-emerald-600 p-2 rounded-lg text-white shadow-emerald-200 shadow-md text-2xl">
-          🧮
-        </div>
         <div>
           <h1 class="text-xl font-bold text-gray-900 leading-none">Loyalty Drainer</h1>
           <p class="text-xs text-gray-500 mt-1">Zero Balance Calculator</p>
@@ -114,7 +111,6 @@
             onclick={() => showMath = true}
             class="text-sm text-emerald-600 font-medium hover:bg-emerald-50 px-4 py-2.5 min-h-[44px] rounded-full border border-transparent hover:border-emerald-200 transition-all flex items-center gap-2"
         >
-            <span class="text-lg">ℹ️</span>
             <span class="hidden sm:inline">How it works</span>
         </button>
       </div>

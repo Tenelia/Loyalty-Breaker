@@ -26,22 +26,21 @@
   <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto m-auto">
     <header class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white z-10">
       <h2 class="text-xl font-bold text-gray-900 flex items-center gap-2">
-        <span class="text-2xl">🧮</span>
-        The Discrete Math Behind It
+        The Math Behind It
       </h2>
       <button 
         onclick={close} 
         class="p-2.5 min-w-[44px] min-h-[44px] hover:bg-gray-100 rounded-full transition-colors flex items-center justify-center text-2xl"
         aria-label="Close modal"
       >
-        ✖️
+        &times;
       </button>
     </header>
     
     <div class="p-6 space-y-8">
       
       <section>
-        <h3 class="font-bold text-lg text-gray-800 mb-3">1. The Problem Definition</h3>
+        <h3 class="font-bold text-lg text-gray-800 mb-3">Problem Definition</h3>
         <p class="text-gray-600 leading-relaxed">
           You have a current balance <code class="bg-gray-100 px-2 py-0.5 rounded text-pink-600 font-mono font-bold">B</code>. 
           You are forced to top up in increments of <code class="bg-gray-100 px-2 py-0.5 rounded text-blue-600 font-mono font-bold">$10</code> (or custom).
@@ -57,7 +56,7 @@
       </section>
 
       <section>
-        <h3 class="font-bold text-lg text-gray-800 mb-3">2. Dynamic Programming (Knapsack Variation)</h3>
+        <h3 class="font-bold text-lg text-gray-800 mb-3">Dynamic Programming (Knapsack Variation)</h3>
         <p class="text-gray-600 leading-relaxed mb-4">
           This is solved using a variation of the <strong>Unbounded Knapsack Problem</strong> (or Change-Making Problem). 
           Instead of brute-forcing every combination, we build a "reachability table".
@@ -95,7 +94,6 @@
 
        <section>
         <h3 class="font-bold text-lg text-gray-800 mb-3 flex items-center gap-2">
-            <span class="text-xl">💾</span>
             Local Caching
         </h3>
         <p class="text-gray-600 leading-relaxed text-sm">

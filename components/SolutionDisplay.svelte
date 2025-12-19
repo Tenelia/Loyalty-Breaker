@@ -39,7 +39,6 @@
 {#if status === CalculationStatus.IDLE}
     <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
     <div class="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
-        ☕
     </div>
     <h3 class="text-lg font-semibold text-gray-800 mb-2">Ready to Calculate</h3>
     <p class="text-gray-500 text-sm">
@@ -55,7 +54,6 @@
 {:else if status === CalculationStatus.IMPOSSIBLE}
     <div class="bg-white p-8 rounded-xl shadow-sm border border-red-100 text-center">
     <div class="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
-        ⚠️
     </div>
     <h3 class="text-lg font-semibold text-red-800 mb-2">No Combination Found</h3>
     <p class="text-gray-500 text-sm">
@@ -71,7 +69,6 @@
         <div class="flex-1">
             <div class="flex items-center gap-2 mb-1">
               <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
-                <span class="text-3xl">✅</span>
                 {solutions.length === 1 ? 'Solution Found!' : `${solutions.length} Solutions Found!`}
               </h2>
             </div>
@@ -86,7 +83,7 @@
                   title="Previous solution"
                   aria-label="Previous solution"
                 >
-                  ◀️
+                  &lt;
                 </button>
                 <span class="text-sm font-medium text-gray-600 min-w-[100px] text-center px-2">
                   Option {selectedIndex + 1} of {solutions.length}
@@ -97,7 +94,7 @@
                   title="Next solution"
                   aria-label="Next solution"
                 >
-                  ▶️
+                  &gt;
                 </button>
               </div>
             {/if}
@@ -130,7 +127,6 @@
         <!-- Receipt Card -->
         <section class="md:col-span-2 bg-gray-50 rounded-lg p-5 border border-gray-200 flex flex-col">
             <div class="flex items-center gap-2 mb-4 text-gray-500 border-b border-gray-200 pb-2">
-                <span class="text-lg">🛒</span>
                 <span class="font-medium text-sm">Order Summary</span>
             </div>
             <div class="flex-1 overflow-auto custom-scrollbar">
