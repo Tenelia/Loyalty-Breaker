@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "npm run typecheck",
+    "check": "npm run typecheck"
   },
   "dependencies": {
     "svelte": "^5.43.14"

@@ -38,11 +38,9 @@
 
 {#if status === CalculationStatus.IDLE}
     <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
-    <div class="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
-    </div>
     <h3 class="text-lg font-semibold text-gray-800 mb-2">Ready to Calculate</h3>
     <p class="text-gray-500 text-sm">
-        Add your menu items and set your current balance to find the perfect order.
+        Add menu items, set your current balance, and top-up increment to find the perfect order.
     </p>
     </div>
 {:else if status === CalculationStatus.CALCULATING}
@@ -53,8 +51,6 @@
     </div>
 {:else if status === CalculationStatus.IMPOSSIBLE}
     <div class="bg-white p-8 rounded-xl shadow-sm border border-red-100 text-center">
-    <div class="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
-    </div>
     <h3 class="text-lg font-semibold text-red-800 mb-2">No Combination Found</h3>
     <p class="text-gray-500 text-sm">
         We couldn't find a combination within a reasonable number of top-ups (max 10). Try adding more low-cost items.
@@ -62,7 +58,7 @@
     </div>
 {:else if status === CalculationStatus.FOUND && solution}
     <article class="bg-white rounded-xl shadow-lg border border-emerald-100 overflow-hidden relative">
-    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-teal-500"></div>
+    <div class="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-emerald-400 to-teal-500"></div>
     
     <header class="p-6 bg-emerald-50/50 border-b border-emerald-100">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -79,7 +75,7 @@
               <div class="flex items-center gap-3 mt-3">
                 <button 
                   onclick={prevSolution}
-                  class="p-2.5 min-w-[44px] min-h-[44px] hover:bg-emerald-100 rounded-lg transition-colors flex items-center justify-center text-2xl"
+                  class="btn-icon text-2xl"
                   title="Previous solution"
                   aria-label="Previous solution"
                 >
@@ -90,7 +86,7 @@
                 </span>
                 <button 
                   onclick={nextSolution}
-                  class="p-2.5 min-w-[44px] min-h-[44px] hover:bg-emerald-100 rounded-lg transition-colors flex items-center justify-center text-2xl"
+                  class="btn-icon text-2xl"
                   title="Next solution"
                   aria-label="Next solution"
                 >
@@ -101,7 +97,7 @@
         </div>
         <div class="text-left sm:text-right sm:min-w-[220px]">
             <div class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Total Order</div>
-            <div class="text-3xl font-bold text-emerald-600 break-words">${solution.totalCost.toFixed(2)}</div>
+            <div class="text-3xl font-bold text-emerald-600 wrap-break-word">${solution.totalCost.toFixed(2)}</div>
             <div class="text-xs text-gray-500 mt-1">{solution.itemCount} items ({solution.uniqueItems} unique)</div>
         </div>
         </div>

@@ -93,7 +93,7 @@
     <div class="flex flex-wrap gap-2 w-full md:w-auto">
         <button
             onclick={handleLoadPreset}
-            class="flex-1 md:flex-none justify-center px-4 py-3 min-h-[44px] bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg transition-colors flex items-center gap-2 text-sm font-semibold border border-emerald-200"
+            class="btn-secondary-emerald flex-1 md:flex-none"
             title="Load Starbucks SG Menu"
             aria-label="Load Starbucks Singapore Menu"
         >
@@ -115,12 +115,12 @@
       placeholder="$"
       step="0.01"
       bind:value={newItemPrice}
-      class="w-28 px-3 py-3 min-h-[44px] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all bg-white text-base"
+      class="input-currency input-currency-small"
     />
     <button
       type="submit"
       disabled={!newItemName || !newItemPrice}
-      class="bg-gray-900 text-white px-4 py-3 min-w-[44px] min-h-[44px] rounded-lg hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+      class="btn-primary px-4 py-3 min-w-[44px]"
       aria-label="Add menu item"
     >
       +
@@ -144,7 +144,7 @@
                     <span class="text-gray-700 font-medium text-sm leading-tight pr-8">{item.name}</span>
                     <button
                         onclick={() => handleRemoveItem(item.id)}
-                        class="text-gray-300 hover:text-red-500 p-2 min-w-[36px] min-h-[36px] rounded opacity-0 group-hover:opacity-100 transition-opacity absolute top-1 right-1 flex items-center justify-center text-lg"
+                        class="btn-icon-danger absolute top-1 right-1 text-lg"
                         title="Remove item"
                         aria-label="Remove {item.name}"
                     >

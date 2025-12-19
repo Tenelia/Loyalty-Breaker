@@ -23,10 +23,9 @@ export const findCheapestCombination = (
   
   // Filter invalid items and convert to cents
   const itemsCents = menuItems
-    .map((item, index) => ({ 
+    .map((item) => ({ 
         ...item, 
-        priceCents: Math.round(item.price * 100),
-        originalIndex: index
+        priceCents: Math.round(item.price * 100)
     }))
     .filter(item => item.priceCents > 0);
 

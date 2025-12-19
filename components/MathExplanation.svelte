@@ -30,7 +30,7 @@
       </h2>
       <button 
         onclick={close} 
-        class="p-2.5 min-w-[44px] min-h-[44px] hover:bg-gray-100 rounded-full transition-colors flex items-center justify-center text-2xl"
+        class="btn-icon-close text-2xl"
         aria-label="Close modal"
       >
         &times;
@@ -105,7 +105,7 @@
     <div class="p-6 bg-gray-50 border-t border-gray-100 text-center">
         <button 
           onclick={close} 
-          class="px-8 py-3 min-h-[44px] bg-gray-900 text-white rounded-lg font-semibold hover:bg-black transition-colors"
+          class="btn-primary px-8 py-3"
         >
             Got it, thanks!
         </button>

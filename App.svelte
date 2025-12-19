@@ -101,7 +101,7 @@
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
       <div class="flex items-center gap-3">
         <div>
-          <h1 class="text-xl font-bold text-gray-900 leading-none">Loyalty Drainer</h1>
+          <h1 class="text-xl font-bold text-gray-900 leading-none">Loyalty Breaker</h1>
           <p class="text-xs text-gray-500 mt-1">Zero Balance Calculator</p>
         </div>
       </div>
@@ -109,7 +109,7 @@
       <div class="flex items-center gap-2">
         <button 
             onclick={() => showMath = true}
-            class="text-sm text-emerald-600 font-medium hover:bg-emerald-50 px-4 py-2.5 min-h-[44px] rounded-full border border-transparent hover:border-emerald-200 transition-all flex items-center gap-2"
+            class="btn-secondary"
         >
             <span class="hidden sm:inline">How it works</span>
         </button>
@@ -127,21 +127,18 @@
 
         <!-- Balance Input -->
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-          <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-            Current Balance
-          </h2>
           <div class="flex flex-col gap-2 mb-6">
             <label for="balance" class="text-xs font-semibold uppercase tracking-wide text-gray-500">
               Enter your current stored value
             </label>
             <div class="relative">
-              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-semibold text-gray-400 pointer-events-none">$</span>
+              <span class="currency-prefix currency-prefix-large">$</span>
               <input
                 id="balance"
                 type="number"
                 step="0.01"
                 bind:value={balanceStr}
-                class="w-full bg-gray-50 border border-gray-200 rounded-2xl pl-12 pr-4 py-4 min-h-[64px] text-3xl font-bold text-gray-900 tracking-tight shadow-inner focus:outline-none focus:ring-4 focus:ring-emerald-100 focus:border-emerald-500 transition-all placeholder:text-gray-300"
+                class="input-currency input-currency-large"
                 placeholder="0.00"
               />
             </div>
@@ -150,12 +147,12 @@
           <div class="mb-6 pt-4 border-t border-gray-100">
              <label for="increment" class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 block">Top-up Increment</label>
              <div class="relative">
-                 <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-light text-lg">$</span>
+                 <span class="currency-prefix currency-prefix-medium">$</span>
                  <input 
                    id="increment"
                    type="number" 
                    bind:value={topUpIncrementStr}
-                   class="w-full bg-gray-50 border border-gray-200 rounded-lg py-3 min-h-[44px] pl-8 pr-3 text-gray-700 font-medium text-base focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
+                   class="input-currency input-currency-medium"
                    placeholder="10"
                  />
              </div>
@@ -164,7 +161,7 @@
           <div class="flex flex-col gap-3">
             <button
                 onclick={handleCalculate}
-                class="w-full bg-gray-900 text-white py-4 min-h-[56px] rounded-xl font-bold text-lg hover:bg-black hover:shadow-xl transform hover:-translate-y-0.5 transition-all active:translate-y-0 flex items-center justify-center gap-2"
+                class="btn-large w-full"
             >
                 Calculate
             </button>

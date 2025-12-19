@@ -11,18 +11,25 @@ Uses a dynamic programming algorithm (unbounded knapsack variation) to find the 
 - LocalStorage persistence for balance, increment, and menu
 - Fully responsive, touch-friendly UI
 - Client-side only - zero backend
-- Lightweight bundle (~26 KB gzipped CSS + 21 KB gzipped JS)
+- Lightweight bundle (~5.5 KB gzipped CSS + 19.2 KB gzipped JS)
 
-## If Run Locally
+## Development
 
 **Prerequisites:** Node.js 22+
 
 1. `npm install`
 2. `npm run dev`
 
+## Production Build
+
+1. `npm run build` - Builds the production bundle
+2. `npm run preview` - Preview the production build locally
+3. `npm run typecheck` - Run TypeScript type checking
+4. `npm run lint` - Run linting checks
+
 ## Tech Stack
 
 - **Svelte 5** - Component framework with runes
-- **Vite** - Build tool and dev server (~58 KB bundle, 21 KB gzipped)
+- **Vite** - Build tool and dev server (52 KB bundle, 19.2 KB gzipped)
 - **TypeScript** - Type safety
 - **Tailwind CSS 4** - Styling (bundled via npm, no CDN dependency)

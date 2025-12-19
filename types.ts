@@ -17,6 +17,5 @@ export enum CalculationStatus {
   IDLE = 'IDLE',
   CALCULATING = 'CALCULATING',
   FOUND = 'FOUND',
-  IMPOSSIBLE = 'IMPOSSIBLE',
-  ERROR = 'ERROR'
+  IMPOSSIBLE = 'IMPOSSIBLE'
 }

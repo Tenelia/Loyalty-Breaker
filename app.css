@@ -1,6 +1,23 @@
 @import "tailwindcss";
 
-/* Custom scrollbar for menu list */
+:root {
+  --t: all .15s cubic-bezier(.4,0,.2,1);
+  --f: flex;
+  --c: center;
+  --h: 44px;
+  --g9: #111827;
+  --b: #000;
+  --e6: #059669;
+  --e7: #047857;
+  --e0: #d1fae5;
+  --e1: #a7f3d0;
+  --g3: #d1d5db;
+  --g4: #9ca3af;
+  --r5: #ef4444;
+  --g1: #f3f4f6;
+}
+
+/* Custom scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
@@ -8,24 +25,203 @@
   background: #f1f1f1;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #d1d5db;
+  background: var(--g3);
   border-radius: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: var(--g4);
 }
 
 /* Dialog Animation */
-dialog[open] {
+dialog[open],
+dialog::backdrop {
   animation: fade-in 0.2s ease-out;
 }
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
-  animation: fade-in 0.2s ease-out;
 }
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
+/* Base Button - Shared properties */
+.btn-primary,.btn-secondary,.btn-secondary-emerald,.btn-icon,.btn-icon-close,.btn-icon-danger,.btn-large {
+  min-height: var(--h);
+  transition: var(--t);
+  display: var(--f);
+  align-items: var(--c);
+  justify-content: var(--c);
+}
+
+/* Primary Button */
+.btn-primary {
+  background: var(--g9);
+  color: #fff;
+  border-radius: .5rem;
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background: var(--b);
+}
+.btn-primary:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* Secondary Button */
+.btn-secondary {
+  padding: .625rem 1rem;
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--e6);
+  background: transparent;
+  border: 1px solid var(--g4);
+  border-radius: 9999px;
+}
+.btn-secondary:hover {
+  background: var(--e0);
+  border-color: var(--e1);
+}
+
+/* Secondary Emerald Variant */
+.btn-secondary-emerald {
+  padding: .75rem 1rem;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--e7);
+  background: var(--e0);
+  border: 1px solid var(--e1);
+  border-radius: .5rem;
+}
+.btn-secondary-emerald:hover {
+  background: var(--e1);
+}
+
+/* Icon Button */
+.btn-icon {
+  min-width: var(--h);
+  padding: .625rem;
+  border-radius: .5rem;
+}
+.btn-icon:hover {
+  background: var(--e0);
+}
+
+/* Icon Close Button */
+.btn-icon-close {
+  min-width: var(--h);
+  padding: .625rem;
+  border-radius: 9999px;
+}
+.btn-icon-close:hover {
+  background: var(--g1);
+}
+
+/* Icon Danger Button */
+.btn-icon-danger {
+  min-width: 36px;
+  min-height: 36px;
+  padding: .5rem;
+  border-radius: .25rem;
+  color: var(--g3);
+  opacity: 0;
+}
+.btn-icon-danger:hover {
+  color: var(--r5);
+}
+.group:hover .btn-icon-danger {
+  opacity: 1;
+}
+
+/* Large Button */
+.btn-large {
+  min-height: 56px;
+  padding: 1rem 0;
+  background: var(--g9);
+  color: #fff;
+  border-radius: .75rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+.btn-large:hover {
+  background: var(--b);
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);
+  transform: translateY(-2px);
+}
+.btn-large:active {
+  transform: translateY(0);
+}
+
+/* Currency Input Fields - Consolidated */
+.currency-prefix {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--g4);
+  pointer-events: none;
+}
+.currency-prefix-large {
+  left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.currency-prefix-medium {
+  left: .75rem;
+  font-size: 1.125rem;
+  font-weight: 300;
+}
+
+.input-currency {
+  width: 100%;
+  background: #f9fafb;
+  border: 1px solid var(--g3);
+  transition: var(--t);
+}
+.input-currency:focus {
+  outline: none;
+  border-color: var(--e6);
+}
+.input-currency::placeholder {
+  color: var(--g4);
+}
+
+.input-currency-large {
+  border-radius: 1rem;
+  padding: 1rem 1rem 1rem 3rem;
+  min-height: 64px;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--g9);
+  letter-spacing: -0.025em;
+  box-shadow: inset 0 2px 4px 0 rgba(0,0,0,.06);
+}
+.input-currency-large:focus {
+  box-shadow: inset 0 2px 4px 0 rgba(0,0,0,.06),0 0 0 4px var(--e0);
+}
+
+.input-currency-medium {
+  border-radius: .5rem;
+  padding: .75rem .75rem .75rem 2rem;
+  min-height: var(--h);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
+}
+.input-currency-medium:focus {
+  box-shadow: 0 0 0 2px var(--e6);
+}
+
+.input-currency-small {
+  width: 7rem;
+  border-radius: .5rem;
+  padding: .75rem;
+  min-height: var(--h);
+  font-size: 1rem;
+  background: #fff;
+}
+.input-currency-small:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px var(--e6);
+}
